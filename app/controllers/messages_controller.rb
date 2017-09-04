@@ -10,28 +10,17 @@ class MessagesController < ApplicationController
   def create
     @message = Message.new(message_params)
     if @message.save
+      flash[:notice] = "Message successfully added"
       redirect_to messages_path
     else
       render :new
     end
   end
 
-  # def edit
-  #   @message = Message.find(params[:id])
-  # end
-  #
-  # def update
-  #   @message= Message.find(params[:id])
-  #   if @message.update(message_params)
-  #     redirect_to messages_path
-  #   else
-  #     render :edit
-  #   end
-  # end
-
   def destroy
     @message = Message.find(params[:id])
     @message.destroy
+    flash[:warning] = "Message successfully deleted"
     redirect_to messages_path
   end
 
