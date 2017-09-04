@@ -1,0 +1,15 @@
+<h1>Messages</h1>
+
+<ul>
+  <% @messages.each do |message| %>
+    <li><%= "#{message.body} - created on #{message.created_at}" %>
+      <p><%= link_to "Delete", message_path(message),
+                         :data => {:confirm => "You sure?",
+                                   :method => "delete"} %></p>
+    </li>
+  <% end %>
+</ul>
+
+<hr>
+
+<%= link_to "New Message", new_message_path %>
