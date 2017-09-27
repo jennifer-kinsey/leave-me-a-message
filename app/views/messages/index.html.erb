@@ -3,13 +3,10 @@
 <ul>
   <% @messages.each do |message| %>
     <li><%= "#{message.body} - created on #{message.created_at}" %>
-      <p><%= link_to "Delete", user_message_path(current_user.id, message),
-                         :data => {:confirm => "You sure?",
-                                   :method => "delete"} %></p>
-    </li>
+      <p><%= link_to "Delete", message, method: :delete, data: { confirm: 'Are you sure?' } %>
   <% end %>
 </ul>
 
 <hr>
 
-<%= link_to "New Message", new_user_message_path %>
+<%= link_to "New Message", new_message_path %>

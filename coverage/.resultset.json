@@ -556,6 +556,9 @@
       "/Users/kinsey/Desktop/lmam/app/controllers/application_controller.rb": [
         1,
         1,
+        1,
+        0,
+        null,
         null
       ],
       "/Users/kinsey/Desktop/lmam/app/helpers/application_helper.rb": [
@@ -584,15 +587,18 @@
         1,
         1,
         0,
-        null,
-        null,
-        1,
         0,
         null,
         null,
         1,
         0,
         0,
+        null,
+        null,
+        1,
+        0,
+        0,
+        0,
         0,
         0,
         null,
@@ -601,6 +607,7 @@
         null,
         null,
         1,
+        0,
         0,
         0,
         0,
@@ -644,6 +651,6 @@
         null
       ]
     },
-    "timestamp": 1504570372
+    "timestamp": 1506546980
   }
 }
