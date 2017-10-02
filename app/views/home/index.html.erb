@@ -1,5 +1,10 @@
-<h1>Welcome</h1>
+<h1>Welcome to Leave Me a Message!</h1>
 
-<%= link_to "Sign in", new_user_session_path, class: "btn btn-default btn-lrg"%>
+<% if !current_user%>
+  <%= link_to "Sign in", new_user_session_path, class: "btn btn-default btn-lrg"%>
 
-<%= link_to "Sign up", new_user_registration_path, class: "btn btn-default btn-lrg"%>
+  <%= link_to "Sign up", new_user_registration_path, class: "btn btn-default btn-lrg"%>
+<% elsif current_user %>
+ <h3> You currently have <%=current_user.messages.length%> messages </h3>
+ <h3> <%= link_to "Read my messages", messages_path%> </h3>
+<% end %>
