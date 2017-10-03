@@ -1,21 +1,33 @@
 <h1 class="text-align-center"> <%= current_user.username %>'s Messages</h1>
 
 <ul class="nav nav-tabs" id="dashboard_products">
-  <li class="active"><a href="#owned_products" data-toggle="tab"> All </a></li>
-  <li><a href="#borrowed_products" data-toggle="tab"> Favorites </a></li>
-  <li><a href="#given_products" data-toggle="tab" > Sent </a></li>
+  <li class="active"><a href="#all_messages" data-toggle="tab"> All </a></li>
+  <li><a href="#favorite_messages" data-toggle="tab"> Favorites </a></li>
+  <li><a href="#sent_messages" data-toggle="tab" > Sent </a></li>
 </ul>
 <div class="tab-content">
-  <div class="tab-pane active" id="owned_products">
+  <div class="tab-pane active" id="all_messages">
+    <div>
+      <% @messages.each do |message| %>
+        <i class="fa fa-window-close-o fa-2x fa-pull-right" aria-hidden="true"></i>
+        <h4><%= message.body %></h4>
+        <p><%= "sent #{time_ago_in_words(message.created_at)} ago" %></p>
+        <p><%= link_to "Delete", message, method: :delete, data: { confirm: 'Are you sure?' } %></p>
+        <i class="fa fa-heart-o fa-2x fa-pull-right" aria-hidden="true"></i>
+        <br>
+        <hr>
+      <% end %>
+    </div>
+  </div>
+  <div class="tab-pane" id="favorite_messages">
     <div>
       <% @messages.each do |message| %>
         <h4><%= message.body %></h4>
-        <p><%= "sent on #{message.created_at}" %></p>
+        <p><%= "sent #{message.created_at.localtime.strftime("%m-%d-%Y %H:%M")}" %></p>
         <p><%= link_to "Delete", message, method: :delete, data: { confirm: 'Are you sure?' } %></p>
         <hr>
       <% end %>
     </div>
   </div>
-  <div class="tab-pane" id="borrowed_products" > Work in Progress </div>
-  <div class="tab-pane" id="given_products" > ...WIP </div>
+  <div class="tab-pane" id="sent_messages"> ...WIP </div>
 </div>
