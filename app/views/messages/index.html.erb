@@ -1,10 +1,21 @@
-<h1>Messages for <%= current_user.email %></h1>
+<h1 class="text-align-center"> <%= current_user.username %>'s Messages</h1>
 
-<ul>
-  <% @messages.each do |message| %>
-    <li><%= "#{message.body} - created on #{message.created_at}" %>
-      <p><%= link_to "Delete", message, method: :delete, data: { confirm: 'Are you sure?' } %>
-  <% end %>
+<ul class="nav nav-tabs" id="dashboard_products">
+  <li class="active"><a href="#owned_products" data-toggle="tab"> All </a></li>
+  <li><a href="#borrowed_products" data-toggle="tab"> Favorites </a></li>
+  <li><a href="#given_products" data-toggle="tab" > Sent </a></li>
 </ul>
-
-<hr>
+<div class="tab-content">
+  <div class="tab-pane active" id="owned_products">
+    <div>
+      <% @messages.each do |message| %>
+        <h4><%= message.body %></h4>
+        <p><%= "sent on #{message.created_at}" %></p>
+        <p><%= link_to "Delete", message, method: :delete, data: { confirm: 'Are you sure?' } %></p>
+        <hr>
+      <% end %>
+    </div>
+  </div>
+  <div class="tab-pane" id="borrowed_products" > Work in Progress </div>
+  <div class="tab-pane" id="given_products" > ...WIP </div>
+</div>

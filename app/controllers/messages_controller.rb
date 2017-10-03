@@ -29,9 +29,6 @@ class MessagesController < ApplicationController
     end
   end
 
-  def thanks
-    @user = User.find_by(username: params[:username])
-  end
 
 private
   def message_params
