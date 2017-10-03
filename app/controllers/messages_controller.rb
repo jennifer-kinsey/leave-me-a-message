@@ -1,5 +1,5 @@
 class MessagesController < ApplicationController
-  before_action :authorize, except: [:create, :new]
+  before_action :authorize, except: [:create, :new, :thanks]
 
   def index
     @messages = current_user.messages.all
@@ -23,7 +23,7 @@ class MessagesController < ApplicationController
       flash[:notice] = "Message successfully added"
       # redirect_to :controller => 'thanks', :action => 'index'
       # redirect_to '/thanks'
-      redirect_to home_path
+      redirect_to thanks_path
     else
       binding.pry
       render :new
