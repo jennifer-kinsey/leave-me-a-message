@@ -1,4 +1,6 @@
 class MessagesController < ApplicationController
+  before_action :authorize, except: [:create]
+
   def index
     @messages = current_user.messages.all
   end
