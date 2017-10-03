@@ -14,7 +14,10 @@
         <% end %>
         <h4><%= message.body %></h4>
         <p><%= "sent #{time_ago_in_words(message.created_at)} ago" %></p>
-        <i class="fa fa-heart-o fa-2x fa-pull-right" aria-hidden="true"></i>
+        <div class="favoriteToggler">
+          <i class="fa fa-heart-o fa-2x fa-pull-right fave" aria-hidden="true"></i>
+          <i class="fa fa-heart fa-2x fa-pull-right fave" aria-hidden="true" style="display:none"></i>
+        </div>
         <br>
         <hr>
       <% end %>
@@ -23,10 +26,12 @@
   <div class="tab-pane" id="favorite_messages">
     <div>
       <% @messages.each do |message| %>
-        <h4><%= message.body %></h4>
-        <p><%= "sent #{message.created_at.localtime.strftime("%m-%d-%Y %H:%M")}" %></p>
-        <p><%= link_to "Delete", message, method: :delete, data: { confirm: 'Are you sure?' } %></p>
-        <hr>
+        <% if message.favorite? %>
+          <h4><%= message.body %></h4>
+          <p><%= "sent #{message.created_at.localtime.strftime("%m-%d-%Y %H:%M")}" %></p>
+          <p><%= link_to "Delete", message, method: :delete, data: { confirm: 'Are you sure?' } %></p>
+          <hr>
+        <% end %>
       <% end %>
     </div>
   </div>
