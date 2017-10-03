@@ -29,6 +29,18 @@ class MessagesController < ApplicationController
     end
   end
 
+  def make_favorite
+    @message = Message.find(params[:id])
+    @message.update_attributes(favorite: true)
+    redirect_to messages_path
+  end
+
+  def remove_favorite
+    @message = Message.find(params[:id])
+    @message.update_attributes(favorite: false)
+    redirect_to messages_path
+  end
+
 
 private
   def message_params
