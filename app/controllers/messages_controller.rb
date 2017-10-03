@@ -1,31 +1,22 @@
 class MessagesController < ApplicationController
-  before_action :authorize, except: [:create, :new, :thanks]
+  before_action :authorize, except: [:create, :new]
 
   def index
     @messages = current_user.messages.all
   end
 
   def new
-    puts "in NEW"
     @user = User.find_by(username: params[:username])
-    puts "user is #{@user.username}"
     @message = @user.messages.new
-    puts "message is #{@message.body}"
   end
 
   def create
-    puts "in CREATE"
     @user = User.find_by(username: params[:username])
-    puts "user is #{@user}"
     @message = @user.messages.new(message_params)
-    puts "message is #{@message}"
     if @message.save
       flash[:notice] = "Message successfully added"
-      # redirect_to :controller => 'thanks', :action => 'index'
-      # redirect_to '/thanks'
-      redirect_to thanks_path
+      redirect_to home_path
     else
-      binding.pry
       render :new
     end
   end
