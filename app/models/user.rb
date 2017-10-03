@@ -40,4 +40,9 @@ class User < ApplicationRecord
       end
     end
   end
+
+  #for vanity url
+  def to_param
+    username
+  end
 end

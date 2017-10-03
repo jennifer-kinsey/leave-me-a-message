@@ -1,10 +1,11 @@
 Rails.application.routes.draw do
-  root to: 'home#index'
+  root to: 'home#index', as: 'home'
 
   devise_for :users
-  resources :messages, except: [:edit, :update, :show]
+  resources :messages, except: [:edit, :update, :show, :new, :create, :thanks]
   # Add username vanity url...
-  # post 'users'
-  # get 'photos/:id/:user_id', to: 'photos#show'
+  get ':username', to: 'messages#new', as: "user_messages"
+  post ':username', to: 'messages#create'
+  get 'thanks', to: 'thanks#index', as: "thanks"
 
 end
