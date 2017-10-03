@@ -6,18 +6,26 @@ class MessagesController < ApplicationController
   end
 
   def new
-    @@user = User.find_by(username: params[:username])
-    binding.pry
-    @message = @@user.messages.new
+    puts "in NEW"
+    @user = User.find_by(username: params[:username])
+    puts "user is #{@user.username}"
+    @message = @user.messages.new
+    puts "message is #{@message.body}"
   end
 
   def create
-    # @@user = User.find_by(username: params[:username])
-    @message = @@user.messages.new(message_params)
+    puts "in CREATE"
+    @user = User.find_by(username: params[:username])
+    puts "user is #{@user}"
+    @message = @user.messages.new(message_params)
+    puts "message is #{@message}"
     if @message.save
       flash[:notice] = "Message successfully added"
-      redirect_to thanks_path
+      # redirect_to :controller => 'thanks', :action => 'index'
+      # redirect_to '/thanks'
+      redirect_to home_path
     else
+      binding.pry
       render :new
     end
   end
@@ -28,6 +36,10 @@ class MessagesController < ApplicationController
       flash[:alert] = "Message successfully deleted"
       redirect_to messages_path
     end
+  end
+
+  def thanks
+    @user = User.find_by(username: params[:username])
   end
 
 private
