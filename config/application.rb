@@ -27,5 +27,6 @@ module Lmam
 
     # Don't generate system test files.
     config.generators.system_tests = nil
+    config.browser_validations = true
   end
 end

@@ -1,9 +1,7 @@
 <%= render "layouts/errors", :object => @message %>
 
 <%= form_for [@user, @message] do |f| %>
-  <% puts @message %>
-    <% puts @user %>
-  <%= f.label :body %>
-  <%= f.text_field :body %>
-  <%= f.submit %>
+  <%= f.text_area(:body, size: "100x15", required: true, placeholder: "hey #{@user.username}, you are awesome!") %>
+  <br>
+  <%= f.submit :Submit, class: 'btn btn-success' %>
 <% end %>
