@@ -1,47 +1,52 @@
 <h1 class="text-align-center"> <%= current_user.username %>'s Messages</h1>
 
 <ul class="nav nav-tabs" id="dashboard_products">
-  <li class="active"><a href="#all_messages" data-toggle="tab"> All </a></li>
-  <li><a href="#favorite_messages" data-toggle="tab"> Favorites </a></li>
-  <li><a href="#sent_messages" data-toggle="tab" > Sent </a></li>
+  <li class="active"><a href="#all_messages" data-toggle="tab" class="inherit-color"> All </a></li>
+  <li><a href="#favorite_messages" data-toggle="tab" class="inherit-color"> Favorites </a></li>
+  <li><a href="#sent_messages" data-toggle="tab" class="inherit-color" > Sent </a></li>
 </ul>
+
 <div class="tab-content">
   <div class="tab-pane active" id="all_messages">
+  <% @messages.each do |message| %>
     <div>
-      <% @messages.each do |message| %>
-        <%= link_to message, method: :delete, data: { confirm: 'Are you sure you want to delete this message?' } do %>
-          <i class="fa fa-window-close-o fa-2x fa-pull-right" aria-hidden="true"></i>
-        <% end %>
-        <h4><%= message.body %></h4>
-        <p><%= "sent #{time_ago_in_words(message.created_at)} ago" %></p>
-        <div class="favoriteToggler">
-          <%= message.favorite %>
-          <% if message.favorite != true %>
-            <%= link_to make_favorite_path(message), method: :put do %>
-              <i class="fa fa-heart-o fa-2x fa-pull-right" aria-hidden="true"></i>
-            <% end %>
-          <% else %>
-            <%= link_to remove_favorite_path(message), method: :put do %>
-              <i class="fa fa-heart fa-2x fa-pull-right" aria-hidden="true"></i>
-            <% end %>
-          <% end %>
-        </div>
-        <br>
-        <hr>
+      <%= link_to message, class: "inherit-color", method: :delete, data: { confirm: 'Are you sure you want to delete this message?' } do %>
+        <i class="fa fa-window-close-o fa-2x fa-pull-right" aria-hidden="true"></i>
       <% end %>
+      <h4><%= message.body %></h4>
+      <p><%= "sent #{time_ago_in_words(message.created_at)} ago" %></p>
+      <div class="favoriteToggler">
+        <% if message.favorite != true %>
+          <%= link_to make_favorite_path(message), method: :put, class: "inherit-color" do %>
+            <i class="fa fa-heart-o fa-2x fa-pull-right" aria-hidden="true"></i>
+          <% end %>
+        <% else %>
+          <%= link_to remove_favorite_path(message), method: :put, class: "fav-color" do %>
+            <i class="fa fa-heart fa-2x fa-pull-right" aria-hidden="true"></i>
+          <% end %>
+        <% end %>
+      </div>
+      <br><hr>
     </div>
+  <% end %>
   </div>
+
   <div class="tab-pane" id="favorite_messages">
-    <div>
-      <% @messages.each do |message| %>
+    <% @messages.each do |message| %>
+      <div>
         <% if message.favorite? %>
+          <%= link_to message, class: "inherit-color", method: :delete, data: { confirm: 'Are you sure you want to delete this message?' } do %>
+            <i class="fa fa-window-close-o fa-2x fa-pull-right" aria-hidden="true"></i>
+          <% end %>
           <h4><%= message.body %></h4>
           <p><%= "sent #{message.created_at.localtime.strftime("%m-%d-%Y %H:%M")}" %></p>
-          <p><%= link_to "Delete", message, method: :delete, data: { confirm: 'Are you sure?' } %></p>
-          <hr>
+          <%= link_to remove_favorite_path(message), class: "fav-color", method: :put do %>
+            <i class="fa fa-heart fa-2x fa-pull-right" aria-hidden="true"></i>
+          <% end %>
+          <br><hr>
         <% end %>
-      <% end %>
-    </div>
+      </div>
+    <% end %>
   </div>
   <div class="tab-pane" id="sent_messages"> ...WIP </div>
 </div>

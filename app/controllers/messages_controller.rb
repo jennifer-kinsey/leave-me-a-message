@@ -2,7 +2,7 @@ class MessagesController < ApplicationController
   before_action :authorize, except: [:create, :new]
 
   def index
-    @messages = current_user.messages.all
+    @messages = current_user.messages.all.order(created_at: :desc)
   end
 
   def new
