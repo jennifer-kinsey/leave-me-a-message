@@ -1,4 +1,4 @@
-<%= image_tag current_user.avatar.url(:thumb) %>
+<%= image_tag current_user.avatar.url(:thumb), class: "rounded-centered-image" %>
 
 <h1 class="text-align-center"> <%= (current_user.name ||= current_user.username).capitalize %>'s Messages</h1>
 
