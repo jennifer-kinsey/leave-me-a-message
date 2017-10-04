@@ -1,4 +1,4 @@
-<h1 class="text-align-center"> <%= current_user.username %>'s Messages</h1>
+<h1 class="text-align-center"> <%= (current_user.name ||= current_user.username).capitalize %>'s Messages</h1>
 
 <ul class="nav nav-tabs" id="dashboard_products">
   <li class="active"><a href="#all_messages" data-toggle="tab" class="inherit-color"> All </a></li>
@@ -14,7 +14,7 @@
         <i class="fa fa-window-close-o fa-2x fa-pull-right" aria-hidden="true"></i>
       <% end %>
       <h4><%= message.body %></h4>
-      <p><%= "sent #{time_ago_in_words(message.created_at)} ago" %></p>
+      <p class="subdued-time"><%= "sent #{time_ago_in_words(message.created_at)} ago" %></p>
       <div class="favoriteToggler">
         <% if message.favorite != true %>
           <%= link_to make_favorite_path(message), method: :put, class: "inherit-color" do %>
@@ -39,7 +39,7 @@
             <i class="fa fa-window-close-o fa-2x fa-pull-right" aria-hidden="true"></i>
           <% end %>
           <h4><%= message.body %></h4>
-          <p><%= "sent #{message.created_at.localtime.strftime("%m-%d-%Y %H:%M")}" %></p>
+          <p class="subdued-time"><%= "sent #{message.created_at.localtime.strftime("%m-%d-%Y %H:%M")}" %></p>
           <%= link_to remove_favorite_path(message), class: "fav-color", method: :put do %>
             <i class="fa fa-heart fa-2x fa-pull-right" aria-hidden="true"></i>
           <% end %>
