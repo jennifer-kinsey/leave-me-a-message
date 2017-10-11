@@ -7,4 +7,5 @@
 <% elsif current_user %>
  <h3> You currently have <%=current_user.messages.length%> messages, <%=current_user.name%>. </h3>
  <h3> <%= link_to "Read my messages", messages_path%> </h3>
+ <h3> Share your link with other users: ..(fb integration, etc).. </h3>
 <% end %>

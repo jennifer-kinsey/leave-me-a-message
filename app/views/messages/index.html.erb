@@ -19,11 +19,11 @@
       <p class="subdued-time"><%= "sent #{time_ago_in_words(message.created_at)} ago" %></p>
       <div class="favoriteToggler">
         <% if message.favorite != true %>
-          <%= link_to make_favorite_path(message), method: :put, class: "inherit-color", id: "fave-#{message.id}" do %>
+          <%= link_to make_favorite_path(message), method: :put, class: "inherit-color", id: "make-fave-#{message.id}" do %>
             <i class="fa fa-heart-o fa-2x fa-pull-right" aria-hidden="true"></i>
           <% end %>
         <% else %>
-          <%= link_to remove_favorite_path(message), method: :put, class: "fav-color", id: "unfave-#{message.id}" do %>
+          <%= link_to remove_favorite_path(message), method: :put, class: "fav-color", id: "remove-fave-#{message.id}" do %>
             <i class="fa fa-heart fa-2x fa-pull-right" aria-hidden="true"></i>
           <% end %>
         <% end %>

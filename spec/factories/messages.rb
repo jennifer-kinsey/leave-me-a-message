@@ -1,7 +1,7 @@
 FactoryGirl.define do
   factory :message do
     body 'hey, bud!'
-    favorite true
+    favorite false
     user_id 1
     id 1
   end

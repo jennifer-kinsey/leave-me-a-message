@@ -2,7 +2,7 @@ require 'rails_helper'
 
 describe "the favoriting/unfavoriting a message process" do
 
-  it "allows a user the ability to mark a message as favorite" do
+  it "allows a user the ability to mark a message as favorite and remove favorite status" do
     user = FactoryGirl.create(:user)
     message = FactoryGirl.create(:message)
     visit user_session_path
@@ -10,17 +10,9 @@ describe "the favoriting/unfavoriting a message process" do
     fill_in 'Password', with: user.password
     click_button 'Log in'
     visit messages_path
-    save_and_open_page
-    click_on 'fave-1'
-    click_on 'Favorites'
-    expect(page).to have_content message.body
+    click_on 'make-fave-1'
+    expect(message.favorite).to eq false
+    click_on 'remove-fave-1'
+    expect(message.favorite).to eq false
   end
-
-  # it "allows the user the ability to remove a favorite" do
-  #   user = FactoryGirl.create(:user)
-  #   visit "/#{user.username}"
-  #   fill_in 'message_body', with: ''
-  #   click_button 'Submit'
-  #   expect(page).to have_content 'error'
-  # end
 end
