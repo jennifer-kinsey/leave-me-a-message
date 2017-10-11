@@ -1,4 +1,4 @@
 class Message < ActiveRecord::Base
   belongs_to :user
-  validates :body, :presence => true
+  validates :body, :favorite, :presence => true
 end

@@ -1,12 +1,25 @@
 {
   "RSpec": {
     "coverage": {
-      "/Users/kinsey/Desktop/lmam/spec/models/message_spec.rb": [
+      "/Users/kinsey/Desktop/lmam/spec/features/home_spec.rb": [
         1,
         null,
         1,
-        2,
-        2,
+        1,
+        1,
+        1,
+        1,
+        null,
+        null,
+        1,
+        1,
+        1,
+        1,
+        1,
+        1,
+        1,
+        1,
+        null,
         null
       ],
       "/Users/kinsey/Desktop/lmam/spec/rails_helper.rb": [
@@ -571,9 +584,9 @@
         null,
         null,
         1,
-        0,
-        0,
-        0,
+        1,
+        1,
+        1,
         0,
         0,
         0,
@@ -611,7 +624,7 @@
         1,
         null,
         1,
-        0,
+        1,
         null,
         null,
         1,
@@ -622,9 +635,9 @@
         null,
         null,
         1,
-        0,
-        0,
-        0,
+        2,
+        2,
+        2,
         null,
         null
       ],
@@ -717,11 +730,44 @@
         1,
         null
       ],
+      "/Users/kinsey/Desktop/lmam/spec/factories/messages.rb": [
+        1,
+        1,
+        1,
+        1,
+        1,
+        null,
+        null
+      ],
       "/Users/kinsey/Desktop/lmam/spec/factories/users.rb": [
         1,
         1,
+        1,
+        1,
+        1,
+        1,
+        1,
+        null,
+        1,
         null,
         null,
+        null,
+        null,
+        null,
+        null,
+        null,
+        null,
+        null,
+        null,
+        null
+      ],
+      "/Users/kinsey/Desktop/lmam/spec/models/message_spec.rb": [
+        1,
+        null,
+        1,
+        2,
+        2,
+        2,
         null
       ],
       "/Users/kinsey/Desktop/lmam/spec/models/user_spec.rb": [
@@ -732,6 +778,6 @@
         null
       ]
     },
-    "timestamp": 1507696743
+    "timestamp": 1507699219
   }
 }

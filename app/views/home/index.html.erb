@@ -5,6 +5,6 @@
 
   <%= link_to "Sign up", new_user_registration_path, class: "btn btn-default btn-lrg"%>
 <% elsif current_user %>
- <h3> You currently have <%=current_user.messages.length%> messages </h3>
+ <h3> You currently have <%=current_user.messages.length%> messages, <%=current_user.name%>. </h3>
  <h3> <%= link_to "Read my messages", messages_path%> </h3>
 <% end %>
