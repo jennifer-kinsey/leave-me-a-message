@@ -12,7 +12,7 @@
   <div class="tab-pane active" id="all_messages">
   <% @messages.each do |message| %>
     <div>
-      <%= link_to message, class: "inherit-color", method: :delete, data: { confirm: 'Are you sure you want to delete this message?' } do %>
+      <%= link_to message, class: "inherit-color", method: :delete, data: { confirm: 'Are you sure you want to delete this message?' }, id: "message_#{message.id}" do %>
         <i class="fa fa-window-close-o fa-2x fa-pull-right" aria-hidden="true"></i>
       <% end %>
       <h4><%= message.body %></h4>

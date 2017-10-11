@@ -3,5 +3,6 @@ FactoryGirl.define do
     body 'hey, bud!'
     favorite true
     user_id 1
+    id 1
   end
 end

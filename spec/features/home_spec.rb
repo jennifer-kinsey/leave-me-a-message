@@ -4,7 +4,9 @@ describe "the home page" do
   it "shows the homepage" do
     visit home_path
     expect(page).to have_content 'Welcome to Leave Me a Message!'
-    expect(page).to have_content 'Log In', 'Sign in', 'Sign up'
+    expect(page).to have_content 'Log In'
+    expect(page).to have_content 'Sign in'
+    expect(page).to have_content 'Sign up'
   end
 
   it "allows logged in users the ability to check messages" do
